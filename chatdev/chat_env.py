@@ -128,7 +128,7 @@ class ChatEnv:
                                            stdout=subprocess.PIPE,
                                            stderr=subprocess.PIPE
                                            )
-            time.sleep(3)
+            time.sleep(10)
             return_code = process.returncode
             # Check if the software is still running
             if process.poll() is None:

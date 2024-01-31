@@ -1,10 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 import openai
-from openai import OpenAI
 import wikipediaapi
 import os
-import time
 
 self_api_key = os.environ.get('OPENAI_API_KEY')
 BASE_URL = os.environ.get('BASE_URL')

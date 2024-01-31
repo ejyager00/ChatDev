@@ -45,7 +45,7 @@ class ComposedPhase(ABC):
         self.phase_env["cycle_num"] = cycle_num
 
         # init chat turn
-        self.chat_turn_limit_default = 10
+        self.chat_turn_limit_default = 50
 
         # init role
         self.role_prompts = dict()

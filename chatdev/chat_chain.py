@@ -63,7 +63,7 @@ class ChatChain:
         self.web_spider = self.config["web_spider"]
 
         # init default max chat turn
-        self.chat_turn_limit_default = 10
+        self.chat_turn_limit_default = 50
 
         # init ChatEnv
         self.chat_env_config = ChatEnvConfig(clear_structure=check_bool(self.config["clear_structure"]),
@@ -333,21 +333,22 @@ class ChatChain:
             revised_task_prompt: revised prompt from the prompt engineer agent
 
         """
-        self_task_improve_prompt = """I will give you a short description of a software design requirement, 
-please rewrite it into a detailed prompt that can make large language model know how to make this software better based this prompt,
-the prompt should ensure LLMs build a software that can be run correctly, which is the most import part you need to consider.
-remember that the revised prompt should not contain more than 200 words, 
-here is the short description:\"{}\". 
-If the revised prompt is revised_version_of_the_description, 
-then you should return a message in a format like \"<INFO> revised_version_of_the_description\", do not return messages in other formats.""".format(
+        self_task_improve_prompt = """I will provide you with a short description of a customer's request for a software product.
+Please rewrite it into a detailed prompt that will explain to a large language model the functional requirements of the software in detail.
+Do not include non-functional requirements, and do not provide suggestions on how to implement the software.
+The prompt should ensure that LLMs build a software that can be run correctly and meets the customer's needs, which is your most important consideration.
+You may add additional requirements if they would help the software to better meet the customer's needs, but ensure that all requirements are consistent with the customer's original.
+The revised prompt should not contain more than 300 words. Be precise and concise, but thorough.
+Here is the short description:\"{}\".
+If the revised prompt is revised_version_of_the_description, then you should return a message in a format like \"<INFO> revised_version_of_the_description\". Do not return messages in other formats.""".format(
             task_prompt)
         role_play_session = RolePlaying(
             assistant_role_name="Prompt Engineer",
-            assistant_role_prompt="You are an professional prompt engineer that can improve user input prompt to make LLM better understand these prompts.",
-            user_role_prompt="You are an user that want to use LLM to build software.",
-            user_role_name="User",
+            assistant_role_prompt="You are a professional prompt engineer that can improve user input prompts to help LLMs better understand the tasks at hand.",
+            user_role_prompt="You are a customer that wants to use an LLM to build software.",
+            user_role_name="Customer",
             task_type=TaskType.CHATDEV,
-            task_prompt="Do prompt engineering on user query",
+            task_prompt="Do prompt engineering on the user query.",
             with_task_specify=False,
             model_type=self.model_type,
         )

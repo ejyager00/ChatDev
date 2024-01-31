@@ -61,7 +61,7 @@ class Phase(ABC):
             model_type=ModelType.GPT_3_5_TURBO,
             memory=None,
             placeholders=None,
-            chat_turn_limit=10
+            chat_turn_limit=50
     ) -> str:
         """
 

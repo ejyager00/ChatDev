@@ -41,6 +41,15 @@ class RoleType(Enum):
     CHATDEV_REVIEWER = "code reviewer"
     CHATDEV_TESTER = "software test engineer"
     CHATDEV_CCO = "chief creative officer (CCO)"
+    CHATDEV_TEAM_LEAD = "team lead"
+    CHATDEV_PRODUCT_MANAGER = "product manager"
+    CHATDEV_PRODUCT_OWNER = "product owner"
+    CHATDEV_SOFTWARE_ARCHITECT = "software architect"
+    CHATDEV_SOFTWARE_ENGINEER = "software engineer"
+    CHATDEV_SENIOR_SOFTWARE_ENGINEER = "senior software engineer"
+    CHATDEV_QUALITY_ASSURANCE_ENGINEER = "quality assurance engineer"
+    CHATDEV_DESIGNER = "designer"
+    CHATDEV_SCRUM_MASTER = "scrum master"
 
 
 class ModelType(Enum):
@@ -48,7 +57,7 @@ class ModelType(Enum):
     GPT_3_5_TURBO_NEW = "gpt-3.5-turbo-16k"
     GPT_4 = "gpt-4"
     GPT_4_32k = "gpt-4-32k"
-    GPT_4_TURBO = "gpt-4-1106-preview"
+    GPT_4_TURBO = "gpt-4-turbo-preview"
     GPT_4_TURBO_V = "gpt-4-1106-vision-preview"
 
     STUB = "stub"
